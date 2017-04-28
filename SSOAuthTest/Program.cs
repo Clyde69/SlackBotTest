@@ -21,31 +21,13 @@ namespace SSOAuthTest
     class Program
     {
         static string baseUri = "https://login.eveonline.com?redirect_uri=eveauth-r3mus-esi://callback";
-        static string authUrl = "https://login.eveonline.com/oauth/authorize/?response_type=code&redirect_uri=eveauth-r3mus-esi://callback&client_id=585af301715a42f9b66a0d20f9493220&scope=esi-characters.read_chat_channels.v1&state=uniquestate123";
+        static string authUrl = "https://login.eveonline.com/oauth/authorize/?response_type=code&redirect_uri=";
 
-        static string uri1 = "https://login.eveonline.com/Account/LogOn?ReturnUrl=%2Foauth%2Fauthorize%2F%3Fresponse_type%3Dcode%26redirect_uri%3Deveauth-r3mus-esi%3A%2F%2Fcallback%26client_id%3D585af301715a42f9b66a0d20f9493220";
+        static string uri1 = "https://login.eveonline.com/Account/LogOn?ReturnUrl=";
 
         static void Main(string[] args)
         {
             EveOWIN();
-            ////var autha = new HtmlDocument();
-            ////autha.LoadHtml(Web.BaseRequest(string.Concat(baseUri, authUrl)));
-            ////var postbackUri = autha.DocumentNode.SelectNodes("//html/body/div/section/form").First().Attributes.First(f => f.Name == "action").Value;
-            ////var postData = "ClientIdentifier=585af301715a42f9b66a0d20f9493220&RedirectUri=eveauth-r3mus-esi://callback&State=uniquestate123&Scope=esi-characters.read_chat_channels.v1&ResponseType=code&CharacterId=93902200&action=Authorize&__RequestVerificationToken={0}";
-
-            //var stuff = "UserName=clyde69&Password=p33K4800&RememberMe=false&ClientIdentifier=585af301715a42f9b66a0d20f9493220";
-            //var uri = HttpUtility.HtmlEncode(stuff);
-            //var response = HttpPostRequest(uri1, uri);
-
-            ////var response = WebPost(uri1, new NameValueCollection() {
-            ////    { "UserName", "clyde69" },
-            ////    { "Password", "p33K4800" }
-            ////    ,
-            ////    { "ClientIdentifier", "585af301715a42f9b66a0d20f9493220" },
-            ////    { "RememberMe", "false" }
-            ////});
-
-            //SeleniumPost();
         }
         public static string HttpPostRequest(string url, string post)
         {
@@ -94,9 +76,9 @@ namespace SSOAuthTest
             cd.Url = @"https://login.eveonline.com";
             cd.Navigate();
             IWebElement e = cd.FindElementById("UserName");
-            e.SendKeys("clyde69");
+            e.SendKeys("");
             e = cd.FindElementById("Password");
-            e.SendKeys("p33K4800");
+            e.SendKeys("");
             e = cd.FindElementById("submitButton");
             
             e.Click();
@@ -159,8 +141,8 @@ namespace SSOAuthTest
             app.UseEveOnlineAuthentication(authOptions);
 
             var cI = new ClaimsIdentity();
-            cI.AddClaim(new Claim("Username", "Clyde69"));
-            cI.AddClaim(new Claim("Password", "p33K4800"));
+            cI.AddClaim(new Claim("Username", ""));
+            cI.AddClaim(new Claim("Password", ""));
 
             var request = WebRequest.Create(uri1) as HttpWebRequest;
             request.Method = "POST";
