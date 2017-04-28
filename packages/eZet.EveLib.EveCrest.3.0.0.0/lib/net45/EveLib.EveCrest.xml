@@ -1,0 +1,3646 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EveLib.EveCrest</name>
+    </assembly>
+    <members>
+        <member name="T:eZet.EveLib.EveCrestModule.CrestMode">
+            <summary>
+                Enum EveCrest Access Mode
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.CrestMode.Public">
+            <summary>
+                Public CREST
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.CrestMode.Authenticated">
+            <summary>
+                Authenticated CREST. This requires a valid AccessToken or a valid RefreshToken and EncryptedKey
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.EveCrest">
+            <summary>
+                Provides access to the Eve Online CREST API.
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.EveCrest.DefaultPublicHost">
+            <summary>
+                The default URI used to access the public CREST API. This can be overridded by setting the Host.
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.EveCrest.DefaultAuthHost">
+            <summary>
+                The default URI used to access the authenticated CREST API. This can be overridded by setting the Host.
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.EveCrest._root">
+            <summary>
+                The CREST root if cached
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.EveCrest"/> class, in Public mode.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.EveCrest"/> class, in Authenticated mode.
+            </summary>
+            <param name="accessToken">The access token.</param>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.#ctor(System.String,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.EveCrest"/> class, in Authenticated mode.
+            </summary>
+            <param name="refreshToken">The refresh token.</param>
+            <param name="encodedKey">The encoded key.</param>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.RefreshAccessTokenAsync">
+            <summary>
+                Refreshes the access token. This requires a valid RefreshToken and EncodedKey to have been set.
+                The EveCrest instance is updated with the new access token.
+            </summary>
+            <returns>Task&lt;AuthResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.RefreshAccessToken">
+            <summary>
+                Refreshes the access token. This requires a valid RefreshToken and EncodedKey to have been set.
+                The EveCrest instance is updated with the new access token.
+            </summary>
+            <returns>Task&lt;AuthResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.LoadImageAsync(eZet.EveLib.EveCrestModule.Models.Links.ImageHref)">
+            <summary>
+            Loads the image asynchronous.
+            </summary>
+            <param name="link">The image link.</param>
+            <returns>Task&lt;System.Byte[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.LoadImage(eZet.EveLib.EveCrestModule.Models.Links.ImageHref)">
+            <summary>
+            Loads the image.
+            </summary>
+            <param name="link">The image link</param>
+            <returns>Task&lt;System.Byte[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.LoadAsync``1(eZet.EveLib.EveCrestModule.Models.Links.Href{``0})">
+            <summary>
+                Loads a Href async.
+            </summary>
+            <typeparam name="T">The resource type, usually inferred from the parameter</typeparam>
+            <param name="uri">The Href that should be loaded</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.Load``1(eZet.EveLib.EveCrestModule.Models.Links.Href{``0})">
+            <summary>
+                Loads a Href
+            </summary>
+            <typeparam name="T">The resource type, usually inferred from the parameter</typeparam>
+            <param name="uri">The Href that should be loaded</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.LoadAsync``1(eZet.EveLib.EveCrestModule.Models.Links.ILinkedEntity{``0})">
+            <summary>
+                Loads a ILinkedEntity async
+            </summary>
+            <typeparam name="T">The resource type, usually inferred from the parameter</typeparam>
+            <param name="entity">The items that should be loaded</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.Load``1(eZet.EveLib.EveCrestModule.Models.Links.ILinkedEntity{``0})">
+            <summary>
+                Loads a ILinkedEntity
+            </summary>
+            <typeparam name="T">The resource type, usually inferred from the parameter</typeparam>
+            <param name="entity">The items that should be loaded</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.LoadAsync``1(System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.ILinkedEntity{``0}})">
+            <summary>
+                Loads a ILinkedEntity collection async.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <returns>Task&lt;T[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.Load``1(System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.ILinkedEntity{``0}})">
+            <summary>
+                Loads a ILinkedEntity collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <returns>Task&lt;T[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.LoadAsync``1(System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+                Loads a Href collection async.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <returns>Task&lt;T[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.Load``1(System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+                Loads a Href collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="items">The items.</param>
+            <returns>Task&lt;T[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetRootAsync">
+            <summary>
+                Returns the CREST root
+            </summary>
+            <returns>Task&lt;CrestRoot&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetRoot">
+            <summary>
+                Returns the CREST root
+            </summary>
+            <returns>CrestRoot.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetKillmailAsync(System.Int64,System.String)">
+            <summary>
+                Returns data on the specified killmail.
+            </summary>
+            <param name="id">Killmail ID</param>
+            <param name="hash">Killmail hash</param>
+            <returns>Returns data for the specified killmail.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetKillmail(System.Int64,System.String)">
+            <summary>
+                Returns data on the specified killmail.
+            </summary>
+            <param name="id">Killmail ID</param>
+            <param name="hash">Killmail hash</param>
+            <returns>Returns data for the specified killmail.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIncursionsAsync">
+            <summary>
+                Returns a list of all active incursions.
+            </summary>
+            <returns>A list of all active incursions.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIncursions">
+            <summary>
+                Returns a list of all active incursions.
+            </summary>
+            <returns>A list of all active incursions.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetAlliancesAsync(System.Int32)">
+            <summary>
+                Returns a list of all alliances.
+            </summary>
+            <param name="page">The 1-indexed page to return. Number of total pages is available in the response.</param>
+            <returns>A list of all alliances.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetAlliances(System.Int32)">
+            <summary>
+                Returns a list of all alliances.
+            </summary>
+            <param name="page">The 1-indexed page to return. Number of total pages is available in the repsonse.</param>
+            <returns>A list of all alliances.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetAllianceAsync(System.Int64)">
+            <summary>
+                Returns data about a specific alliance.
+            </summary>
+            <param name="allianceId">A valid alliance ID</param>
+            <returns>Data for specified alliance</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetAlliance(System.Int64)">
+            <summary>
+                Returns data about a specific alliance.
+            </summary>
+            <param name="allianceId">A valid alliance ID</param>
+            <returns>Data for specified alliance</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetMarketHistoryAsync(System.Int32,System.Int32)">
+            <summary>
+                Returns daily price and volume history for a specific region and item type.
+            </summary>
+            <param name="regionId">Region ID</param>
+            <param name="typeId">Type ID</param>
+            <returns>Market history for the specified region and type.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetMarketHistory(System.Int32,System.Int32)">
+            <summary>
+                Returns daily price and volume history for a specific region and item type.
+            </summary>
+            <param name="regionId">Region ID</param>
+            <param name="typeId">Type ID</param>
+            <returns>Market history for the specified region and type.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetMarketPricesAsync">
+            <summary>
+                Returns the average and adjusted values for all items
+            </summary>
+            <returns>Task&lt;MarketTypePriceCollection&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetMarketPrices">
+            <summary>
+                Returns the average and adjusted values for all items
+            </summary>
+            <returns>MarketTypePriceCollection.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetWarsAsync(System.Int32)">
+            <summary>
+                Returns a list of all wars.
+            </summary>
+            <param name="page">The 1-indexed page to return. Number of total pages is available in the repsonse.</param>
+            <returns>A list of all wars.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetWars(System.Int32)">
+            <summary>
+                Returns a list of all wars.
+            </summary>
+            <param name="page">The 1-indexed page to return. Number of total pages is available in the repsonse.</param>
+            <returns>A list of all wars.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetWarAsync(System.Int32)">
+            <summary>
+                Returns data for a specific war.
+            </summary>
+            <param name="warId">War ID</param>
+            <returns>Data for the specified war.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetWar(System.Int32)">
+            <summary>
+                Returns data for a specific war.
+            </summary>
+            <param name="warId">War ID</param>
+            <returns>Data for the specified war.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetWarKillmailsAsync(System.Int32)">
+            <summary>
+                Returns a list of all killmails related to a specified war.
+            </summary>
+            <param name="warId">War ID</param>
+            <returns>A list of all killmails related to the specified war.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetWarKillmails(System.Int32)">
+            <summary>
+                Returns a list of all killmails related to a specified war.
+            </summary>
+            <param name="warId">War ID</param>
+            <returns>A list of all killmails related to the specified war.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetSpecialitiesAsync">
+            <summary>
+                Returns a list of all industry specialities
+            </summary>
+            <returns>A list of all industry specialities</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetSpecialities">
+            <summary>
+                Returns a list of all industry specialities
+            </summary>
+            <returns>A list of all industry specialities</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetSpecialityAsync(System.Int32)">
+            <summary>
+                Returns details for the requested speciality
+            </summary>
+            <param name="specialityId">Speciality ID</param>
+            <returns>Task&lt;IndustrySpeciality&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetSpeciality(System.Int32)">
+            <summary>
+                Returns details for the requested speciality
+            </summary>
+            <param name="specialityId">Speciality ID</param>
+            <returns>IndustrySpeciality.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryTeamsAsync">
+            <summary>
+                Returns a list of all industry teams
+            </summary>
+            <returns>A list of all industry teams</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryTeams">
+            <summary>
+                Returns a list of all industry teams
+            </summary>
+            <returns>A list of all industry teams</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryTeamAsync(System.Int32)">
+            <summary>
+                Returns data for the specified industry team
+            </summary>
+            <param name="teamId">The team ID</param>
+            <returns>Task&lt;IndustryTeam&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryTeam(System.Int32)">
+            <summary>
+                Returns data for the specified industry team
+            </summary>
+            <param name="teamId">The team ID</param>
+            <returns>IndustryTeam.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustrySystemsAsync">
+            <summary>
+                Returns a list of industry systems and prices
+            </summary>
+            <returns>Task&lt;IndustrySystemCollection&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustrySystems">
+            <summary>
+                Returns a list of industry systems and prices
+            </summary>
+            <returns>IndustrySystemCollection.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryTeamAuctionsAsync">
+            <summary>
+                Returns a list of all current industry team auctions
+            </summary>
+            <returns>A list of all current industry team auctions</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryTeamAuction">
+            <summary>
+                Returns a list of all current industry team auctions
+            </summary>
+            <returns>A list of all current industry team auctions</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryFacilitiesAsync">
+            <summary>
+                Returns a collection of all industry facilities
+            </summary>
+            <returns>Task&lt;IndustryFacilityCollection&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.GetIndustryFacilities">
+            <summary>
+                Returns a collection of all industry facilities
+            </summary>
+            <returns>IndustryFacilityCollection.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.requestAsync``1(System.String)">
+            <summary>
+                Performs a request using the request handler.
+            </summary>
+            <typeparam name="T">Response type</typeparam>
+            <param name="relPath">Relative path</param>
+            <returns></returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.EveCrest.requestAsync``1(System.Uri)">
+            <summary>
+                Performs a request using the request handler.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI.</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.Host">
+            <summary>
+                Gets or sets the host used to access the EveCrest API.
+            </summary>
+            <value>The base public URI.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.EveAuth">
+            <summary>
+                Gets or sets the IEveAuth instance used for Eve SSO.
+            </summary>
+            <value>The eve sso.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.AccessToken">
+            <summary>
+                Gets or sets the CREST Access Token
+            </summary>
+            <value>The access token.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.RefreshToken">
+            <summary>
+                Gets or sets the refresh token.
+            </summary>
+            <value>The refresh token.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.EncodedKey">
+            <summary>
+                Gets or sets the encoded key. This is required to refresh access tokens.
+            </summary>
+            <value>The encoded key.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.EnableRootCache">
+            <summary>
+                Gets or sets a value indicating whether EveCrest is allowed to cache the CrestRoot object. This is enabled by
+                default.
+            </summary>
+            <value><c>true</c> if [allow root cache]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.EnableAutomaticTokenRefresh">
+            <summary>
+                Gets or sets a value indicating whether to allow the library to automatically refresh the access token. This
+                requires a valid RefreshToken and EncryptedKey to be set. This is enabled by default if using the RefreshToken ctor.
+            </summary>
+            <value><c>true</c> if [allow automatic refresh]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.EnableAutomaticPaging">
+            <summary>
+            Gets or sets a value indicating whether to allow Query() methods to allow automatic paging. This may perform additional web requests.
+            </summary>
+            <value><c>true</c> if [allow automatic paging]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.Mode">
+            <summary>
+                Gets the CREST access mode.
+            </summary>
+            <value>The mode.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.RequestHandler">
+            <summary>
+                Gets or sets the request handler.
+            </summary>
+            <value>The request handler.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.ImageRequestHandler">
+            <summary>
+            Gets or sets the image request handler.
+            </summary>
+            <value>The image request handler.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.EveCrest.ApiPath">
+            <summary>
+                Gets or sets the path to the API root relative to the host.
+            </summary>
+            <value>The API path.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Exceptions.DeprecatedResourceException">
+            <summary>
+                Class DeprecatedResourceException.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Exceptions.DeprecatedResourceException.#ctor(System.String,System.Net.HttpWebResponse)">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Exceptions.DeprecatedResourceException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="response">The response.</param>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Exceptions.DeprecatedResourceException.Response">
+            <summary>
+                The response generated by the deprecated resource
+            </summary>
+            <value>The response.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Exceptions.ResourceNotSupportedException">
+            <summary>
+            Class ResourceNotSupportedException.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Exceptions.ResourceNotSupportedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Exceptions.ResourceNotSupportedException"/> class with a specified error message.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.ImageHref">
+            <summary>
+            Class ImageHref.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Links.ImageHref.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.ImageHref.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>The URI.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot">
+            <summary>
+            Class DustRoot. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1">
+            <summary>
+                Class CrestResource.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1">
+            <summary>
+                Interface ICrestResource
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.QueryAsync``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+                Queries the resource asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.QueryAsync``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}})">
+            <summary>
+                Queries the resource asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.Query``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+                Queries the resource.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.Query``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}})">
+            <summary>
+                Queries the resource.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.QueryAsync``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}}})">
+            <summary>
+            Queries a collection of resources asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.Query``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}}})">
+            <summary>
+            Queries a collection of resources.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.QueryAsync``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}}})">
+            <summary>
+            Queries a collection of resources asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.Query``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}}})">
+            <summary>
+            Queries a collection of resources.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.ResponseHeaders">
+            <summary>
+            Gets or sets the response headers.
+            </summary>
+            <value>The response headers.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.IsDeprecated">
+            <summary>
+                Gets or sets a value indicating whether this instance is deprecated.
+            </summary>
+            <value><c>true</c> if this instance is deprecated; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.ContentType">
+            <summary>
+                Gets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ICrestResource`1.EveCrest">
+            <summary>
+                Gets or sets the crest.
+            </summary>
+            <value>The crest.</value>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.QueryAsync``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+                Queries the resource asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.Query``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+                Queries the resource.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.QueryAsync``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}})">
+            <summary>
+                Queries the resource asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.Query``1(System.Func{`0,eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}})">
+            <summary>
+                Queries the resource.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.QueryAsync``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}}})">
+            <summary>
+            Queries a collection of resources asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.Query``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}}})">
+            <summary>
+            Queries a collection of resources.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.QueryAsync``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}}})">
+            <summary>
+            Queries a collection of resources asynchronous.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.Query``1(System.Func{`0,System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}}})">
+            <summary>
+            Queries a collection of resources.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.EveCrest">
+            <summary>
+                Gets or sets the crest instance used to query resources.
+            </summary>
+            <value>The crest instance</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.ResponseHeaders">
+            <summary>
+            Gets or sets the response headers.
+            </summary>
+            <value>The response headers.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.IsDeprecated">
+            <summary>
+                Gets or sets a value indicating whether this resource is deprecated.
+            </summary>
+            <value><c>true</c> if this instance is deprecated; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestResource`1.ContentType">
+            <summary>
+                Gets or sets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.BattleQueues">
+            <summary>
+            Gets or sets the battle queues.
+            </summary>
+            <value>The battle queues.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.Battles">
+            <summary>
+            Gets or sets the battles.
+            </summary>
+            <value>The battles.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.Checkpoints">
+            <summary>
+            Gets or sets the checkpoints.
+            </summary>
+            <value>The checkpoints.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>The configuration.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.contentStreaming">
+            <summary>
+            Gets or sets the content streaming.
+            </summary>
+            <value>The content streaming.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.Devices">
+            <summary>
+            Gets or sets the devices.
+            </summary>
+            <value>The devices.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.DistrictInfrastructure">
+            <summary>
+            Gets or sets the district infrastructure.
+            </summary>
+            <value>The district infrastructure.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.DistrictReinforce">
+            <summary>
+            Gets or sets the district reinforce.
+            </summary>
+            <value>The district reinforce.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.Documents">
+            <summary>
+            Gets or sets the documents.
+            </summary>
+            <value>The documents.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.DustPortraits">
+            <summary>
+            Gets or sets the dust portraits.
+            </summary>
+            <value>The dust portraits.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.DustSpecialties">
+            <summary>
+            Gets or sets the dust specialties.
+            </summary>
+            <value>The dust specialties.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.FullMarketGroups">
+            <summary>
+            Gets or sets the full market groups.
+            </summary>
+            <value>The full market groups.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.infantryMarketGroups">
+            <summary>
+            Gets or sets the infantry market groups.
+            </summary>
+            <value>The infantry market groups.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.KeepAlive">
+            <summary>
+            Gets or sets the keep alive.
+            </summary>
+            <value>The keep alive.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.L10NString">
+            <summary>
+            Gets or sets the L10N string.
+            </summary>
+            <value>The L10N string.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.PathToGame">
+            <summary>
+            Gets or sets the path to game.
+            </summary>
+            <value>The path to game.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.Squads">
+            <summary>
+            Gets or sets the squads.
+            </summary>
+            <value>The squads.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.DustRoot.LoyaltyStores">
+            <summary>
+            Gets or sets the loyalty stores.
+            </summary>
+            <value>The loyalty stores.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.EveRoot">
+            <summary>
+            Class EveRoot. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.EveRoot.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.EveRoot"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder">
+            <summary>
+            Class MarketOrder.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity`1">
+            <summary>
+                Class LinkedEntity. A base class for linked resources that has a name and ID.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.ILinkedEntity`1">
+            <summary>
+                Interface ILinkedEntity
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.ILinkedEntity`1.Href">
+            <summary>
+                Gets or sets the href.
+            </summary>
+            <value>The href.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity`1.Id">
+            <summary>
+                Gets or sets the identifier. If the ID is not returned explicitly by the API, it will try to infer the ID from the
+                Href. See IsExplicitId. If the ID is negative, it failed to infer the ID.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity`1.IsExplicitId">
+            <summary>
+                Gets or sets a value indicating whether this instance has an explicit identifier.
+            </summary>
+            <value><c>true</c> if this instance has explicit identifier; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity`1.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity`1.Href">
+            <summary>
+                The entity href
+            </summary>
+            <value>The href.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Buy">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder"/> is buy.
+            </summary>
+            <value><c>true</c> if buy; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Duration">
+            <summary>
+            Gets or sets the duration.
+            </summary>
+            <value>The duration.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Issued">
+            <summary>
+            Gets or sets the issued.
+            </summary>
+            <value>The issued.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Location">
+            <summary>
+            Gets or sets the location.
+            </summary>
+            <value>The location.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.MinVolume">
+            <summary>
+            Gets or sets the minimum volume.
+            </summary>
+            <value>The minimum volume.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Price">
+            <summary>
+            Gets or sets the price.
+            </summary>
+            <value>The price.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Range">
+            <summary>
+            Gets or sets the range.
+            </summary>
+            <value>The range.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Type">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrder.Volume">
+            <summary>
+            Gets or sets the volume.
+            </summary>
+            <value>The volume.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.TokenDecode">
+            <summary>
+            Class TokenDecode. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.TokenDecode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.TokenDecode"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.TokenDecode.Character">
+            <summary>
+            Gets or sets the character.
+            </summary>
+            <value>The character.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember">
+            <summary>
+                Class TournamentTeamMember. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember.Self">
+            <summary>
+                Gets or sets the self.
+            </summary>
+            <value>The self.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember.Alliance">
+            <summary>
+                Gets or sets the alliance.
+            </summary>
+            <value>The alliance.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMember.Icon">
+            <summary>
+                Gets or sets the icon.
+            </summary>
+            <value>The icon.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.BanEntry">
+            <summary>
+                Class BanEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.BanEntry.TypeBans">
+            <summary>
+                Gets or sets the type bans.
+            </summary>
+            <value>The type bans.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.BanEntry.BannedBy">
+            <summary>
+                Gets or sets the banned by.
+            </summary>
+            <value>The banned by.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.CharacterEntry">
+            <summary>
+                Class CharacterEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CharacterEntry.IsNpc">
+            <summary>
+                Gets or sets a value indicating whether this instance is NPC.
+            </summary>
+            <value><c>true</c> if this instance is NPC; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CharacterEntry.Capsuleer">
+            <summary>
+                Gets or sets the capsuleer.
+            </summary>
+            <value>The capsuleer.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CharacterEntry.Portraits">
+            <summary>
+                Gets or sets the portraits.
+            </summary>
+            <value>The portraits.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.CorporationEntry">
+            <summary>
+                Class CorporationEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CorporationEntry.IsNpc">
+            <summary>
+                Gets or sets a value indicating whether this instance is NPC.
+            </summary>
+            <value><c>true</c> if this instance is NPC; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CorporationEntry.Logo">
+            <summary>
+                Gets or sets the logo.
+            </summary>
+            <value>The logo.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Constellation">
+            <summary>
+                Class Constellation. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Constellation.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Constellation"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Constellation.Position">
+            <summary>
+                Gets or sets the position.
+            </summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Constellation.Region">
+            <summary>
+                Gets or sets the region.
+            </summary>
+            <value>The region.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Constellation.Systems">
+            <summary>
+                Gets or sets the systems.
+            </summary>
+            <value>The systems.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Constellation.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory">
+            <summary>
+                Class ItemCategory. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory.Groups">
+            <summary>
+                Gets or sets the groups.
+            </summary>
+            <value>The groups.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory.Published">
+            <summary>
+                Gets or sets a value indicating whether this <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategory"/> is published.
+            </summary>
+            <value><c>true</c> if published; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection">
+            <summary>
+                Eve CREST Industry Facilities
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2">
+            <summary>
+                Represents a CREST collection response
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TCollection">The type of items in the collection</typeparam>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.QueryAsync``1(System.Func{System.Collections.Generic.IEnumerable{`1},System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}}})">
+            <summary>
+            Queries a collection of resources for a collection of items, async.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Query``1(System.Func{System.Collections.Generic.IEnumerable{`1},System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}}})">
+            <summary>
+            Queries a collection of resources for a collection of items.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.QueryAsync``1(System.Func{System.Collections.Generic.IEnumerable{`1},System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}}})">
+            <summary>
+            Queries a collection of resources for a collection of items, async.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Query``1(System.Func{System.Collections.Generic.IEnumerable{`1},System.Collections.Generic.IEnumerable{eZet.EveLib.EveCrestModule.Models.Links.Href{``0}}})">
+            <summary>
+            Queries a collection of resources for a collection of items.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.QueryAsync``1(System.Func{System.Collections.Generic.IEnumerable{`1},eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+            Queries a collection of resources for a single item, async.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Query``1(System.Func{System.Collections.Generic.IEnumerable{`1},eZet.EveLib.EveCrestModule.Models.Links.Href{``0}})">
+            <summary>
+            Queries a collection of resources for a single item, async.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.QueryAsync``1(System.Func{System.Collections.Generic.IEnumerable{`1},eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}})">
+            <summary>
+            Queries a collection of resources for a single item, async.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Query``1(System.Func{System.Collections.Generic.IEnumerable{`1},eZet.EveLib.EveCrestModule.Models.Links.LinkedEntity{``0}})">
+            <summary>
+            Queries a collection of resources for a single item.
+            </summary>
+            <typeparam name="TOut">The type of the t out.</typeparam>
+            <param name="objFunc">The object function.</param>
+            <returns>Task&lt;TOut[]&gt;.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.TotalCount">
+            <summary>
+                The total number of items in the collection
+            </summary>
+            <value>The total count.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Items">
+            <summary>
+                The items in the collection
+            </summary>
+            <value>The items.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.PageCount">
+            <summary>
+                The number of pages in the collection
+            </summary>
+            <value>The page count.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Next">
+            <summary>
+                Gets or sets the next.
+            </summary>
+            <value>The next.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CollectionResource`2.Previous">
+            <summary>
+                Gets or sets the previous.
+            </summary>
+            <value>The previous.</value>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry">
+            <summary>
+                Represents an industry facility
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.FacilityId">
+            <summary>
+                The facility ID
+            </summary>
+            <value>The facility identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.Name">
+            <summary>
+                The facility name
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.SolarSystem">
+            <summary>
+                The solar system
+            </summary>
+            <value>The solar system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.Region">
+            <summary>
+                The region
+            </summary>
+            <value>The region.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.Tax">
+            <summary>
+                The facility tax
+            </summary>
+            <value>The tax.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.Owner">
+            <summary>
+                The owner
+            </summary>
+            <value>The owner.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryFacilityCollection.FacilityEntry.Type">
+            <summary>
+                The facility type
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpeciality">
+            <summary>
+                Represents a speciality
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpeciality.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpeciality"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpeciality.Id">
+            <summary>
+                The speciality ID
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpeciality.Name">
+            <summary>
+                The speciality name
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpeciality.Groups">
+            <summary>
+                A list of the spezialization groups
+            </summary>
+            <value>The groups.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.Group">
+            <summary>
+                Represents a speciality group
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.Group.Id">
+            <summary>
+                The group ID
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection">
+            <summary>
+                Represents the response for Industry Systems in CREST
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SolarSystemEntry">
+            <summary>
+                Represesents a solar system for a SystemCostEntry
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SolarSystemEntry.SolarSystem">
+            <summary>
+                The solar system
+            </summary>
+            <value>The solar system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SolarSystemEntry.SystemCostIndices">
+            <summary>
+                A list of system costs
+            </summary>
+            <value>The system cost indices.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SystemCostEntry">
+            <summary>
+                Represents a system cost index in CREST Industry Systems collection
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SystemCostEntry.CostIndex">
+            <summary>
+                The cost index
+            </summary>
+            <value>The index of the cost.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SystemCostEntry.ActivityId">
+            <summary>
+                The activity ID
+            </summary>
+            <value>The activity identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySystemCollection.SystemCostEntry.ActivityName">
+            <summary>
+                The activity name
+            </summary>
+            <value>The name of the activity.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam">
+            <summary>
+                Represents a CREST industry team
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.Id">
+            <summary>
+                The team ID
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.Name">
+            <summary>
+                The team name
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.SolarSystem">
+            <summary>
+                The solar system
+            </summary>
+            <value>The solar system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.Specialization">
+            <summary>
+                The team specialization
+            </summary>
+            <value>The specialization.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.CreationTime">
+            <summary>
+                The team creation time
+            </summary>
+            <value>The creation time.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.ExpiryTime">
+            <summary>
+                The team expiry time
+            </summary>
+            <value>The expiry time.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.CostModifier">
+            <summary>
+                The team cost modifier
+            </summary>
+            <value>The cost modifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.Workers">
+            <summary>
+                A list of the team workers
+            </summary>
+            <value>The workers.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.Activity">
+            <summary>
+                Activity
+            </summary>
+            <value>The activity.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.AuctionExpiryTime">
+            <summary>
+                The expiry time of the auction, if applicable
+            </summary>
+            <value>The auction expiry time.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.SolarSystemBids">
+            <summary>
+                Gets or sets the solar system bids, if applicable
+            </summary>
+            <value>The solar system bids.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.BidEntry">
+            <summary>
+                Class BidEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.BidEntry.CharacterBids">
+            <summary>
+                Gets or sets the character bids.
+            </summary>
+            <value>The character bids.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.BidEntry.SolarSystem">
+            <summary>
+                Gets or sets the solar system.
+            </summary>
+            <value>The solar system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.BidEntry.BidAmount">
+            <summary>
+                Gets or sets the bid amount.
+            </summary>
+            <value>The bid amount.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.CharacterBid">
+            <summary>
+                Class CharacterBid.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.CharacterBid.Character">
+            <summary>
+                Gets or sets the character.
+            </summary>
+            <value>The character.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeam.CharacterBid.BidAmount">
+            <summary>
+                Gets or sets the bid amount.
+            </summary>
+            <value>The bid amount.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeamCollection">
+            <summary>
+                Represents a CREST /industry/teams/ response
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeamCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustryTeamCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats">
+            <summary>
+                Class PilotTournamentStats. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.CorpJoinDate">
+            <summary>
+                Gets or sets the corp join date.
+            </summary>
+            <value>The corp join date.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.Alliance">
+            <summary>
+                Gets or sets the alliance.
+            </summary>
+            <value>The alliance.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.DamageDone">
+            <summary>
+                Gets or sets the damage done.
+            </summary>
+            <value>The damage done.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.Kills">
+            <summary>
+                Gets or sets the kills.
+            </summary>
+            <value>The kills.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.Deaths">
+            <summary>
+                Gets or sets the deaths.
+            </summary>
+            <value>The deaths.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.Corporation">
+            <summary>
+                Gets or sets the corporation.
+            </summary>
+            <value>The corporation.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.Character">
+            <summary>
+                Gets or sets the character.
+            </summary>
+            <value>The character.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.MatchesParticipatedIn">
+            <summary>
+                Gets or sets the matches participated in.
+            </summary>
+            <value>The matches participated in.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.RecentShips">
+            <summary>
+                Gets or sets the recent ships.
+            </summary>
+            <value>The recent ships.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.PilotTournamentStats.CreationDate">
+            <summary>
+                Gets or sets the creation date.
+            </summary>
+            <value>The creation date.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament">
+            <summary>
+                Class Tournament.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.Series">
+            <summary>
+                Gets or sets the series.
+            </summary>
+            <value>The series.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.MembershipCutoff">
+            <summary>
+                Gets or sets the membership cutoff.
+            </summary>
+            <value>The membership cutoff.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.Type">
+            <summary>
+                Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.Entries">
+            <summary>
+                Gets or sets the entries.
+            </summary>
+            <value>The entries.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.TournamentEntry">
+            <summary>
+                Class TournamentEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.Tournament.TournamentEntry.TeamStats">
+            <summary>
+                Gets or sets the team stats.
+            </summary>
+            <value>The team stats.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentCollection">
+            <summary>
+                Class TournamentCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch">
+            <summary>
+                Class TournamentMatch. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Winner">
+            <summary>
+                Gets or sets the winner.
+            </summary>
+            <value>The winner.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Stats">
+            <summary>
+                Gets or sets the stats.
+            </summary>
+            <value>The stats.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.RedTeam">
+            <summary>
+                Gets or sets the red team.
+            </summary>
+            <value>The red team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Bans">
+            <summary>
+                Gets or sets the bans.
+            </summary>
+            <value>The bans.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Finalized">
+            <summary>
+                Gets or sets a value indicating whether this <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch"/> is finalized.
+            </summary>
+            <value><c>true</c> if finalized; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Series">
+            <summary>
+                Gets or sets the series.
+            </summary>
+            <value>The series.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Tournament">
+            <summary>
+                Gets or sets the tournament.
+            </summary>
+            <value>The tournament.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.Score">
+            <summary>
+                Gets or sets the score.
+            </summary>
+            <value>The score.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.BlueTeam">
+            <summary>
+                Gets or sets the blue team.
+            </summary>
+            <value>The blue team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.InProgress">
+            <summary>
+                Gets or sets a value indicating whether [in progress].
+            </summary>
+            <value><c>true</c> if [in progress]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.BanStats">
+            <summary>
+                Class BanStats.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.BanStats.Bans">
+            <summary>
+                Gets or sets the bans.
+            </summary>
+            <value>The bans.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.BanStats.RedTeam">
+            <summary>
+                Gets or sets the red team.
+            </summary>
+            <value>The red team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.BanStats.BlueTeam">
+            <summary>
+                Gets or sets the blue team.
+            </summary>
+            <value>The blue team.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.MatchScore">
+            <summary>
+                Class MatchScore.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.MatchScore.RedTeam">
+            <summary>
+                Gets or sets the red team.
+            </summary>
+            <value>The red team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.MatchScore.BlueTeam">
+            <summary>
+                Gets or sets the blue team.
+            </summary>
+            <value>The blue team.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.MatchStats">
+            <summary>
+                Class MatchStats.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatch.MatchStats.Pilots">
+            <summary>
+                Gets or sets the pilots.
+            </summary>
+            <value>The pilots.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatchCollection">
+            <summary>
+                Class TournamentMatchCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatchCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentMatchCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection">
+            <summary>
+                Class TournamentPilotStatsCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry">
+            <summary>
+                Class PilotStatsEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.DamageDone">
+            <summary>
+                Gets or sets the damage done.
+            </summary>
+            <value>The damage done.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.DamageReceived">
+            <summary>
+                Gets or sets the damage received.
+            </summary>
+            <value>The damage received.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.PilotTournamentStats">
+            <summary>
+                Gets or sets the pilot tournament stats.
+            </summary>
+            <value>The pilot tournament stats.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.IsDead">
+            <summary>
+                Gets or sets a value indicating whether this instance is dead.
+            </summary>
+            <value><c>true</c> if this instance is dead; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.ShipType">
+            <summary>
+                Gets or sets the type of the ship.
+            </summary>
+            <value>The type of the ship.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.Team">
+            <summary>
+                Gets or sets the team.
+            </summary>
+            <value>The team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentPilotStatsCollection.PilotStatsEntry.Pilot">
+            <summary>
+                Gets or sets the pilot.
+            </summary>
+            <value>The pilot.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries">
+            <summary>
+                Class TournamentSeries.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.RedTeam">
+            <summary>
+                Gets or sets the red team.
+            </summary>
+            <value>The red team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.MatchesWon">
+            <summary>
+                Gets or sets the matches won.
+            </summary>
+            <value>The matches won.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.Matches">
+            <summary>
+                Gets or sets the matches.
+            </summary>
+            <value>The matches.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.Self">
+            <summary>
+                Gets or sets the self.
+            </summary>
+            <value>The self.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.Winner">
+            <summary>
+                Gets or sets the winner.
+            </summary>
+            <value>The winner.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.Loser">
+            <summary>
+                Gets or sets the loser.
+            </summary>
+            <value>The loser.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.Length">
+            <summary>
+                Gets or sets the length.
+            </summary>
+            <value>The length.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.BlueTeam">
+            <summary>
+                Gets or sets the blue team.
+            </summary>
+            <value>The blue team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.Structure">
+            <summary>
+                Gets or sets the structure.
+            </summary>
+            <value>The structure.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.MatchStats">
+            <summary>
+                Class MatchStats.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.MatchStats.RedTeam">
+            <summary>
+                Gets or sets the red team.
+            </summary>
+            <value>The red team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.MatchStats.BlueTeam">
+            <summary>
+                Gets or sets the blue team.
+            </summary>
+            <value>The blue team.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.SeriesStructure">
+            <summary>
+                Class TournamentSeries.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.SeriesStructure.OutgoingLoser">
+            <summary>
+                Gets or sets the outgoing loser.
+            </summary>
+            <value>The outgoing loser.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.SeriesStructure.OutgoingWinner">
+            <summary>
+                Gets or sets the outgoing winner.
+            </summary>
+            <value>The outgoing winner.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.TournamentTeam">
+            <summary>
+                Class TournamentTeam.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.TournamentTeam.Team">
+            <summary>
+                Gets or sets the team.
+            </summary>
+            <value>The team.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.TournamentTeam.IsDecided">
+            <summary>
+                Gets or sets a value indicating whether this instance is decided.
+            </summary>
+            <value><c>true</c> if this instance is decided; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeries.TournamentTeam.IsBye">
+            <summary>
+                Gets or sets a value indicating whether this instance is bye.
+            </summary>
+            <value><c>true</c> if this instance is bye; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeriesCollection">
+            <summary>
+                Class TournamentSeriesCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeriesCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentSeriesCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam">
+            <summary>
+                Class TournamentTeam. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.Seed">
+            <summary>
+                Gets or sets the seed.
+            </summary>
+            <value>The seed.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.ShipsKilled">
+            <summary>
+                Gets or sets the ships killed.
+            </summary>
+            <value>The ships killed.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.IskKilled">
+            <summary>
+                Gets or sets the isk killed.
+            </summary>
+            <value>The isk killed.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.Pilots">
+            <summary>
+                Gets or sets the pilots.
+            </summary>
+            <value>The pilots.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.Matches">
+            <summary>
+                Gets or sets the matches.
+            </summary>
+            <value>The matches.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.BanFrequency">
+            <summary>
+                Gets or sets the ban frequency.
+            </summary>
+            <value>The ban frequency.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.Captain">
+            <summary>
+                Gets or sets the captain.
+            </summary>
+            <value>The captain.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.BanFrequencyAgainst">
+            <summary>
+                Gets or sets the ban frequency against.
+            </summary>
+            <value>The ban frequency against.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.Members">
+            <summary>
+                Gets or sets the members.
+            </summary>
+            <value>The members.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.BanFrequencyStats">
+            <summary>
+                Class BanFrequencyStats.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.BanFrequencyStats.NumBans">
+            <summary>
+                Gets or sets the number bans.
+            </summary>
+            <value>The number bans.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeam.BanFrequencyStats.ShipType">
+            <summary>
+                Gets or sets the type of the ship.
+            </summary>
+            <value>The type of the ship.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMemberCollection">
+            <summary>
+                Class TournamentTeamMemberCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMemberCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTeamMemberCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTypeBanCollection">
+            <summary>
+                Class TournamentTypeBanCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTypeBanCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Tournaments.TournamentTypeBanCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker">
+            <summary>
+                Represents a team worker
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.Bonus">
+            <summary>
+                The worker bonus
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.Specialization">
+            <summary>
+                The worker specialization
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.BonusType">
+            <summary>
+                Represents the worker bonus types
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.BonusType.Me">
+            <summary>
+                Material Efficency Bonus
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.BonusType.Te">
+            <summary>
+                Production Efficiency Bonus
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.WorkerBonus">
+            <summary>
+                Represents a worker bonus
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.WorkerBonus.Id">
+            <summary>
+                The bonus ID
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.WorkerBonus.Value">
+            <summary>
+                The bonus value
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.IndustryTeamWorker.WorkerBonus.Type">
+            <summary>
+                The bonus type
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategoryCollection">
+            <summary>
+                Class ItemCategoryCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategoryCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemCategoryCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup">
+            <summary>
+                Class ItemGroup. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup.Category">
+            <summary>
+                Gets or sets the category.
+            </summary>
+            <value>The category.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup.Description">
+            <summary>
+                Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup.Types">
+            <summary>
+                Gets or sets the types.
+            </summary>
+            <value>The types.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup.Published">
+            <summary>
+                Gets or sets a value indicating whether this <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroup"/> is published.
+            </summary>
+            <value><c>true</c> if published; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemType">
+            <summary>
+                Class ItemType. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ItemType.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemType"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemType.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.ItemType.Description">
+            <summary>
+                Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.ImageLinkCollection">
+            <summary>
+                Class ImageLinkCollection.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.ImageLinkCollection.X32">
+            <summary>
+                Gets or sets the X32.
+            </summary>
+            <value>The X32.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.ImageLinkCollection.X64">
+            <summary>
+                Gets or sets the X64.
+            </summary>
+            <value>The X64.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.ImageLinkCollection.X128">
+            <summary>
+                Gets or sets the X128.
+            </summary>
+            <value>The X128.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.ImageLinkCollection.X256">
+            <summary>
+                Gets or sets the X256.
+            </summary>
+            <value>The X256.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemTypeCollection">
+            <summary>
+                Class ItemTypeCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ItemTypeCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemTypeCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.LinkedResource`1">
+            <summary>
+                Class LinkedResource.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.LinkedResource`1.Href">
+            <summary>
+                The entity href
+            </summary>
+            <value>The href.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.LinkedIconEntity`1">
+            <summary>
+                Class LinkedIconEntity.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.LinkedIconEntity`1.Icon">
+            <summary>
+                Gets or sets the icon.
+            </summary>
+            <value>The icon.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroup">
+            <summary>
+                Class MarketGroup. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroup.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroup"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroup.Blueprints">
+            <summary>
+                Gets or sets the blueprints.
+            </summary>
+            <value>The blueprints.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroup.Description">
+            <summary>
+                Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroup.Types">
+            <summary>
+                Gets or sets the types.
+            </summary>
+            <value>The types.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroupCollection">
+            <summary>
+                Class MarketGroupCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroupCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroupCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroupCollection.MarketGroup">
+            <summary>
+                Class MarketGroup.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroupCollection.MarketGroup.Description">
+            <summary>
+                Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketGroupCollection.MarketGroup.Types">
+            <summary>
+                Gets or sets the types.
+            </summary>
+            <value>The types.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrderCollection">
+            <summary>
+            Class MarketOrderCollection.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrderCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketOrderCollection"/> class.
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection">
+            <summary>
+                Class MarketTypeCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection.Item">
+            <summary>
+                Class Item.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection.Item.MarketGroup">
+            <summary>
+                Gets or sets the market group.
+            </summary>
+            <value>The market group.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection.Item.Type">
+            <summary>
+                Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection.TypeItem">
+            <summary>
+                Class TypeItem.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypeCollection.TypeItem.Icon">
+            <summary>
+                Gets or sets the icon.
+            </summary>
+            <value>The icon.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection">
+            <summary>
+                Represents CREST market prices
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection.MarketPriceEntry">
+            <summary>
+                Represents an entry in the Market Price Response collection
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection.MarketPriceEntry.Type">
+            <summary>
+                The item type
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection.MarketPriceEntry.AveragePrice">
+            <summary>
+                The estimated value as displayed in game
+            </summary>
+            <value>The average price.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketTypePriceCollection.MarketPriceEntry.AdjustedPrice">
+            <summary>
+                The adjusted price, used for some internal calculations and valuations, ie. industry
+            </summary>
+            <value>The adjusted price.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.NotImplemented">
+            <summary>
+                Represents a resource that isn't implemented. If this throws a NotImplementedException, please notify the
+                developer.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.NotImplemented.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.NotImplemented"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Planet">
+            <summary>
+                Class Planet. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Planet.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Planet"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Planet.Position">
+            <summary>
+                Gets or sets the position.
+            </summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Planet.Type">
+            <summary>
+                Gets or sets the type.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Planet.System">
+            <summary>
+                Gets or sets the system.
+            </summary>
+            <value>The system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Planet.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.CrestPosition">
+            <summary>
+                Class CrestPosition.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestPosition.X">
+            <summary>
+                Gets or sets the x.
+            </summary>
+            <value>The x.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestPosition.Y">
+            <summary>
+                Gets or sets the y.
+            </summary>
+            <value>The y.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestPosition.Z">
+            <summary>
+                Gets or sets the z.
+            </summary>
+            <value>The z.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Region">
+            <summary>
+                Class Region. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Region.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Region"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Region.Description">
+            <summary>
+                Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Region.MarketBuyOrders">
+            <summary>
+                Gets or sets the market buy orders.
+            </summary>
+            <value>The market buy orders.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Region.MarketSellOrders">
+            <summary>
+                Gets or sets the market sell orders.
+            </summary>
+            <value>The market sell orders.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Region.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Region.Constellations">
+            <summary>
+                Gets or sets the constellations.
+            </summary>
+            <value>The constellations.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.RegionCollection">
+            <summary>
+                Class RegionCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.RegionCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.RegionCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot">
+            <summary>
+                Represents the root response for CREST
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Motd">
+            <summary>
+                The message of the day for each service
+            </summary>
+            <value>The motd.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestEndpoint">
+            <summary>
+                The uri for CREST base
+            </summary>
+            <value>The crest endpoint.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CorporationRoles">
+            <summary>
+                Gets or sets the corporation roles.
+            </summary>
+            <value>The corporation roles.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ItemGroups">
+            <summary>
+                Gets or sets the item groups.
+            </summary>
+            <value>The item groups.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Channels">
+            <summary>
+                Gets or sets the channels.
+            </summary>
+            <value>The channels.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Corporations">
+            <summary>
+                Gets or sets the corporations.
+            </summary>
+            <value>The corporations.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Alliances">
+            <summary>
+                Gets or sets the alliances.
+            </summary>
+            <value>The alliances.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ItemTypes">
+            <summary>
+            Gets or sets the item types.
+            </summary>
+            <value>The item types.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Decode">
+            <summary>
+                Gets or sets the decode.
+            </summary>
+            <value>The decode.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.BattleTheatres">
+            <summary>
+                Gets or sets the battle theatres.
+            </summary>
+            <value>The battle theatres.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MarketPrices">
+            <summary>
+                Gets or sets the market prices.
+            </summary>
+            <value>The market prices.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ItemCategories">
+            <summary>
+            Gets or sets the item categories.
+            </summary>
+            <value>The item categories.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Regions">
+            <summary>
+                Gets or sets the regions.
+            </summary>
+            <value>The regions.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Bloodlines">
+            <summary>
+                Gets or sets the bloodlines.
+            </summary>
+            <value>The bloodlines.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MarketGroups">
+            <summary>
+                Gets or sets the market groups.
+            </summary>
+            <value>The market groups.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Tournaments">
+            <summary>
+                Gets or sets the tournaments.
+            </summary>
+            <value>The tournaments.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Map">
+            <summary>
+                Gets or sets the map.
+            </summary>
+            <value>The map.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.VirtualGoodStore">
+            <summary>
+                Gets or sets the virtual good store.
+            </summary>
+            <value>The virtual good store.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServerVersion">
+            <summary>
+                The server version
+            </summary>
+            <value>The server version.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Wars">
+            <summary>
+                Gets or sets the wars.
+            </summary>
+            <value>The wars.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Incursions">
+            <summary>
+                Gets or sets the incursions.
+            </summary>
+            <value>The incursions.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Races">
+            <summary>
+                Gets or sets the races.
+            </summary>
+            <value>The races.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.AuthEndpoint">
+            <summary>
+                Gets or sets the authentication endpoint.
+            </summary>
+            <value>The authentication endpoint.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServiceStatus">
+            <summary>
+                The service status for all services
+            </summary>
+            <value>The service status.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.UserCounts">
+            <summary>
+                The number of current users of services
+            </summary>
+            <value>The user counts.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Industry">
+            <summary>
+                Current Time endpoint
+            </summary>
+            <value>The industry.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Clients">
+            <summary>
+                Gets or sets the clients.
+            </summary>
+            <value>The clients.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.Time">
+            <summary>
+                Current Time endpoint
+            </summary>
+            <value>The time.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MarketTypes">
+            <summary>
+                Gets or sets the market types.
+            </summary>
+            <value>The market types.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServerName">
+            <summary>
+                The server name
+            </summary>
+            <value>The name of the server.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServiceStatusType">
+            <summary>
+                Represents the server status types
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServiceStatusType.Offline">
+            <summary>
+                Server is offline
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServiceStatusType.Vip">
+            <summary>
+                Server is in VIP mode
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServiceStatusType.Online">
+            <summary>
+                Server is online
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ClientLinks">
+            <summary>
+                Class ClientLinks.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ClientLinks.Dust">
+            <summary>
+                Gets or sets the dust.
+            </summary>
+            <value>The dust.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ClientLinks.Eve">
+            <summary>
+                Gets or sets the eve.
+            </summary>
+            <value>The eve.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestIndustry">
+            <summary>
+                Class CrestIndustry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestIndustry.Facilities">
+            <summary>
+                Gets or sets the facilities.
+            </summary>
+            <value>The facilities.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestIndustry.Specialities">
+            <summary>
+                Gets or sets the specialities.
+            </summary>
+            <value>The specialities.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestIndustry.TeamsInAuction">
+            <summary>
+                Gets or sets the teams in auction.
+            </summary>
+            <value>The teams in auction.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestIndustry.Systems">
+            <summary>
+                Gets or sets the systems.
+            </summary>
+            <value>The systems.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.CrestIndustry.Teams">
+            <summary>
+                Gets or sets the teams.
+            </summary>
+            <value>The teams.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MessageOfTheDay">
+            <summary>
+                Represents a Motd object
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MessageOfTheDay.Dust">
+            <summary>
+                Gets the MOTD for Dust 514
+            </summary>
+            <value>The dust.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MessageOfTheDay.Eve">
+            <summary>
+                Gets the MOTD for Eve Online
+            </summary>
+            <value>The eve.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.MessageOfTheDay.Server">
+            <summary>
+                Gets a url for the MOTD on the server
+            </summary>
+            <value>The server.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServerStatus">
+            <summary>
+                Represents the service status for all servers
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServerStatus.Dust">
+            <summary>
+                The service status for DUST
+            </summary>
+            <value>The dust.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServerStatus.Eve">
+            <summary>
+                The service status for EVE Online
+            </summary>
+            <value>The eve.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.ServerStatus.Server">
+            <summary>
+                The service status for the api server
+            </summary>
+            <value>The server.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.UserCount">
+            <summary>
+                Represents the number of current users of services
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.UserCount.Dust">
+            <summary>
+                Number of currently online users for DUST
+            </summary>
+            <value>The dust.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.CrestRoot.UserCount.Eve">
+            <summary>
+                Number of currently online users for Eve Online
+            </summary>
+            <value>The eve.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpecialityCollection">
+            <summary>
+                Represents a CREST /industry/specialities/ response
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpecialityCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Industry.IndustrySpecialityCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Alliance">
+            <summary>
+                Represents a CREST /allliances/$allianceId/ reponse
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Alliance"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.Id">
+            <summary>
+                The alliance ID
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.Name">
+            <summary>
+                The alliance name
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.ShortName">
+            <summary>
+                The alliance ticker
+            </summary>
+            <value>The short name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.StartDate">
+            <summary>
+                The alliance creation date
+            </summary>
+            <value>The start date.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.CorporationsCount">
+            <summary>
+                The number of corporations in the alliance
+            </summary>
+            <value>The corporations count.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.Description">
+            <summary>
+                The alliance description
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.Deleted">
+            <summary>
+                True if the alliance is deleted, otherwise false
+            </summary>
+            <value><c>true</c> if deleted; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.Url">
+            <summary>
+                The alliance URL, if any
+            </summary>
+            <value>The URL.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.ExecutorCorporation">
+            <summary>
+                The alliance executor corporation
+            </summary>
+            <value>The executor corporation.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.CreatorCorporation">
+            <summary>
+                The alliance creator corporation
+            </summary>
+            <value>The creator corporation.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.CreatorCharacter">
+            <summary>
+                The alliance creator character
+            </summary>
+            <value>The creator character.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Alliance.Corporations">
+            <summary>
+                A list of all corporations in the alliance
+            </summary>
+            <value>The corporations.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.AllianceCollection">
+            <summary>
+                Represents a CREST /alliances/ response
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.AllianceCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.AllianceCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.AllianceCollection.Alliance">
+            <summary>
+                Class Alliance.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.AllianceCollection.Alliance.ShortName">
+            <summary>
+                Gets or sets the short name.
+            </summary>
+            <value>The short name.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Shared.CrestError">
+            <summary>
+                Represents a CREST exception
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestError.Message">
+            <summary>
+                The error message
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestError.Key">
+            <summary>
+                The error key
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestError.ExceptionType">
+            <summary>
+                The exception type
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestError.RefId">
+            <summary>
+                The exception reference ID, if any
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Shared.CrestError.IsLocalized">
+            <summary>
+            Gets or sets a value indicating whether this instance is localized.
+            </summary>
+            <value><c>true</c> if this instance is localized; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Links.Href`1">
+            <summary>
+            Represents a CREST href object
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Links.Href`1.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Links.Href`1"/> class.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Links.Href`1.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Links.Href`1"/> class.
+            </summary>
+            <param name="href">The href.</param>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Links.Href`1.op_Implicit(System.String)~eZet.EveLib.EveCrestModule.Models.Links.Href{`0}">
+            <summary>
+                Performs an implicit conversion from <see cref="T:System.String"/> to <see cref="T:eZet.EveLib.EveCrestModule.Models.Links.Href`1"/>.
+            </summary>
+            <param name="s">The s.</param>
+            <returns>The result of the conversion.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Links.Href`1.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents this instance.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Links.Href`1.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>The URI.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection">
+            <summary>
+                Represents a CREST /incursions/ response
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.IncursionState">
+            <summary>
+                Represens the incursion states
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.IncursionState.Established">
+            <summary>
+                Established incursion
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.IncursionState.Mobilizing">
+            <summary>
+                Mobilizing incursion
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.IncursionState.Withdrawing">
+            <summary>
+                Withdrawing incursion
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.Incursion">
+            <summary>
+                Represents an incursion
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.Incursion.Influence">
+            <summary>
+                The incursion influence
+            </summary>
+            <value>The influence.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.Incursion.HasBoss">
+            <summary>
+                True if the incursion has a boss
+            </summary>
+            <value><c>true</c> if this instance has boss; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.Incursion.State">
+            <summary>
+                The incursion state
+            </summary>
+            <value>The state.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.Incursion.StagingSolarSystem">
+            <summary>
+                The incursion's staging system
+            </summary>
+            <value>The staging solar system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.IncursionCollection.Incursion.Constellation">
+            <summary>
+                The constellation
+            </summary>
+            <value>The constellation.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Killmail">
+            <summary>
+                Represents a CREST killmail
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Killmail"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.SolarSystem">
+            <summary>
+                The solar system
+            </summary>
+            <value>The solar system.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillId">
+            <summary>
+                The kill ID
+            </summary>
+            <value>The kill identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillTime">
+            <summary>
+                The time of the event
+            </summary>
+            <value>The kill time.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.Attackers">
+            <summary>
+                A list of attackers
+            </summary>
+            <value>The attackers.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.AttackerCount">
+            <summary>
+                The number of attackers
+            </summary>
+            <value>The attacker count.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.Victim">
+            <summary>
+                The victim
+            </summary>
+            <value>The victim.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.War">
+            <summary>
+                The war this kill is related to
+            </summary>
+            <value>The war.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.Item">
+            <summary>
+                Represents a killmail item
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.Item.Singleton">
+            <summary>
+                True if this item was a singleton
+            </summary>
+            <value><c>true</c> if singleton; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.Item.Flag">
+            <summary>
+                The item flag
+            </summary>
+            <value>The flag.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.Item.QuantityDestroyed">
+            <summary>
+                The quantity that was destroyed
+            </summary>
+            <value>The quantity destroyed.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailAttacker">
+            <summary>
+                Represents a killmail attacker
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailEntity">
+            <summary>
+                Base class for killmail entities
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailEntity.Character">
+            <summary>
+                The character
+            </summary>
+            <value>The character.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailEntity.Corporation">
+            <summary>
+                The corporation
+            </summary>
+            <value>The corporation.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailEntity.Alliance">
+            <summary>
+                The alliance
+            </summary>
+            <value>The alliance.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailEntity.ShipType">
+            <summary>
+                The ship type
+            </summary>
+            <value>The type of the ship.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailAttacker.DamageDone">
+            <summary>
+                The amount of damage done by this entity
+            </summary>
+            <value>The damage done.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailAttacker.WeaponType">
+            <summary>
+                The weapon type used
+            </summary>
+            <value>The type of the weapon.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailAttacker.FinalBlow">
+            <summary>
+                True if this entity had the final  blow
+            </summary>
+            <value><c>true</c> if [final blow]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailAttacker.SecurityStatus">
+            <summary>
+                The security status
+            </summary>
+            <value>The security status.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailVictim">
+            <summary>
+                Represents a killmail victim
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailVictim.DamageTaken">
+            <summary>
+                The amount of damage taken
+            </summary>
+            <value>The damage taken.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Killmail.KillmailVictim.Items">
+            <summary>
+                A list of items the victim held
+            </summary>
+            <value>The items.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.KillmailCollection">
+            <summary>
+                Represents a CREST /killmails/ response
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.KillmailCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.KillmailCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection">
+            <summary>
+                Represents a CREST market history response
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry">
+            <summary>
+                Class MarketHistoryEntry.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry.Volume">
+            <summary>
+                The volume of items moved
+            </summary>
+            <value>The volume.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry.OrderCount">
+            <summary>
+                The number of orders
+            </summary>
+            <value>The order count.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry.LowPrice">
+            <summary>
+                The lowest price
+            </summary>
+            <value>The low price.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry.HighPrice">
+            <summary>
+                The highst price
+            </summary>
+            <value>The high price.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry.AvgPrice">
+            <summary>
+                The average price
+            </summary>
+            <value>The average price.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.Market.MarketHistoryCollection.MarketHistoryEntry.Date">
+            <summary>
+                The date this entry represents
+            </summary>
+            <value>The date.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem">
+            <summary>
+                Class SolarSystem. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.Stats">
+            <summary>
+                Gets or sets the stats.
+            </summary>
+            <value>The stats.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.Name">
+            <summary>
+                Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.SecurityStatus">
+            <summary>
+                Gets or sets the security status.
+            </summary>
+            <value>The security status.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.SecurityClass">
+            <summary>
+                Gets or sets the security class.
+            </summary>
+            <value>The security class.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.Href">
+            <summary>
+                Gets or sets the href.
+            </summary>
+            <value>The href.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.Planets">
+            <summary>
+                Gets or sets the planets.
+            </summary>
+            <value>The planets.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.Position">
+            <summary>
+                Gets or sets the position.
+            </summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.SolarSystem.Constellation">
+            <summary>
+                Gets or sets the constellation.
+            </summary>
+            <value>The constellation.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.War">
+            <summary>
+                Represents a CREST war
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.War.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.War"/> class.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.Id">
+            <summary>
+                The war ID
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.TimeDeclared">
+            <summary>
+                The time the war was declared
+            </summary>
+            <value>The time declared.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.TimeStarted">
+            <summary>
+                The time the war started
+            </summary>
+            <value>The time started.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.TimeFinished">
+            <summary>
+                The time the war finished
+            </summary>
+            <value>The time finished.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.OpenForAllies">
+            <summary>
+                True if the war is open for allies
+            </summary>
+            <value><c>true</c> if [open for allies]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.AllyCount">
+            <summary>
+                The number of allied entities
+            </summary>
+            <value>The ally count.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.Mutual">
+            <summary>
+                True if the war is mutual
+            </summary>
+            <value><c>true</c> if mutual; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.Defender">
+            <summary>
+                The defending entity
+            </summary>
+            <value>The defender.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.Aggressor">
+            <summary>
+                The aggressing entity
+            </summary>
+            <value>The aggressor.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.War.WarEntity">
+            <summary>
+                Represents an entity in a war
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.WarEntity.ShipsKilled">
+            <summary>
+                The number of ships killed
+            </summary>
+            <value>The ships killed.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Models.Resources.War.WarEntity.IskKilled">
+            <summary>
+                The amount of isk killed
+            </summary>
+            <value>The isk killed.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.WarCollection">
+            <summary>
+                Represents a CREST collection of wars
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.WarCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.WarCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroupCollection">
+            <summary>
+                Class ItemGroupCollection. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroupCollection.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Models.Resources.ItemGroupCollection"/> class.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException">
+            <summary>
+                Exception for EveCrest
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException.#ctor(System.String,System.Net.WebException,System.String,System.String,System.String)">
+            <summary>
+                Creates a new Eve EveCrest Exception
+            </summary>
+            <param name="message">Error message returned by CREST</param>
+            <param name="innerException">The WebException that caused this exception</param>
+            <param name="key">The Key returned by CREST</param>
+            <param name="exceptionType">The Exception Type returned by CREST</param>
+            <param name="refId">the Ref ID returned by CREST</param>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException.#ctor(System.String,System.Net.WebException)">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException.Key">
+            <summary>
+                Gets the Eve CREST Exception key
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException.ExceptionType">
+            <summary>
+                Gets the Eve CREST Exception Type
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException.RefId">
+            <summary>
+                Gets the Eve CREST Exception Reference ID, if any.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler">
+            <summary>
+                Performs requests on the Eve Online CREST API.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.RequestHandlers.eZet.EveLib.Core.RequestHandlers.ICachedCrestRequestHandler">
+            <summary>
+                Interface for a cache enabled request handler
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler">
+            <summary>
+                Interface ICrestRequestHandler
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.RequestAsync``1(System.Uri,System.String)">
+            <summary>
+                Requests a URI asynchronously, and returns the response content.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="uri">The URI.</param>
+            <param name="accessToken">The CREST access accessToken</param>
+            <returns>T.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.ThrowOnDeprecated">
+            <summary>
+                Gets or sets a value indicating whether to throw an exception when requesting a deprecated resource
+            </summary>
+            <value><c>true</c> if [throw on deprecated]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.ThrowOnMissingContentType">
+            <summary>
+                Sets or gets whether to throw a DeprecatedResourceException when requesting a deprecated resource
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.Serializer">
+            <summary>
+                Gets or sets the serializer used to deserialize CREST errors.
+            </summary>
+            <value>The serializer.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.PublicMaxConcurrentRequests">
+            <summary>
+            Gets or sets the size of the public burst.
+            </summary>
+            <value>The size of the public burst.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.AuthedMaxConcurrentRequests">
+            <summary>
+            Gets or sets the size of the authed burst.
+            </summary>
+            <value>The size of the authed burst.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.XRequestedWith">
+            <summary>
+            Gets or sets the x requested with.
+            </summary>
+            <value>The x requested with.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.UserAgent">
+            <summary>
+            Gets or sets the user agent.
+            </summary>
+            <value>The user agent.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.ICrestRequestHandler.Charset">
+            <summary>
+            Gets or sets the charset.
+            </summary>
+            <value>The charset.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.eZet.EveLib.Core.RequestHandlers.ICachedCrestRequestHandler.CacheLevel">
+            <summary>
+            Gets or sets the cache mode.
+            </summary>
+            <value>The cache mode.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.eZet.EveLib.Core.RequestHandlers.ICachedCrestRequestHandler.Cache">
+            <summary>
+                Gets or sets the cache used by this request handler
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.DefaultPublicMaxConcurrentRequests">
+            <summary>
+                The default public max concurrent requests
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.DefaultAuthedMaxConcurrentRequests">
+            <summary>
+                The default authed max concurrent requests
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.DefaultCharset">
+            <summary>
+            The defualt charset
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.TokenType">
+            <summary>
+                The token type
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.#ctor(eZet.EveLib.Core.Serializers.ISerializer)">
+            <summary>
+                Creates a new CachedCrestRequestHandler
+            </summary>
+            <param name="serializer"></param>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.RequestAsync``1(System.Uri,System.String)">
+            <summary>
+            Performs a request, and returns the response content.
+            </summary>
+            <typeparam name="T">Response type</typeparam>
+            <param name="uri">URI to request</param>
+            <param name="accessToken">CREST acces token</param>
+            <returns>T.</returns>
+            <exception cref="T:eZet.EveLib.EveCrestModule.Exceptions.DeprecatedResourceException">The CREST resource is deprecated.</exception>
+            <exception cref="T:eZet.EveLib.EveCrestModule.Exceptions.EveCrestException">
+            Undefined error
+            or
+            or
+            </exception>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.PublicMaxConcurrentRequests">
+            <summary>
+                Gets or sets the size of the public burst.
+            </summary>
+            <value>The size of the public burst.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.AuthedMaxConcurrentRequests">
+            <summary>
+                Gets or sets the size of the authed burst.
+            </summary>
+            <value>The size of the authed burst.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.ThrowOnDeprecated">
+            <summary>
+                Sets or gets whether to throw a DeprecatedResourceException when requesting a deprecated resource. This will help discover outdated models.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.ThrowOnMissingContentType">
+            <summary>
+                Sets or gets whether to throw a NotImplementedException when requesting a resource model with no ContentType. Used for debugging.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.Serializer">
+            <summary>
+                Gets or sets the serializer used to deserialize CREST errors.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.XRequestedWith">
+            <summary>
+            Gets or sets the x requested with.
+            </summary>
+            <value>The x requested with.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.UserAgent">
+            <summary>
+            Gets or sets the user agent.
+            </summary>
+            <value>The user agent.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.Charset">
+            <summary>
+            Gets or sets the charset.
+            </summary>
+            <value>The charset.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.CacheLevel">
+            <summary>
+            Gets or sets the cache mode.
+            </summary>
+            <value>The cache mode.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveCrestModule.RequestHandlers.CachedCrestRequestHandler.Cache">
+            <summary>
+            Gets or sets the cache used by this request handler
+            </summary>
+            <value>The cache.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.ContentTypes">
+            <summary>
+                Class ContentTypes.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveCrestModule.ContentTypes.Get``1(System.Boolean)">
+            <summary>
+                Gets this instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>System.String.</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:eZet.EveLib.EveCrestModule.ResponseHeader">
+            <summary>
+            Class ResponseHeader.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,403 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>EveLib.EveWho</name>
+  </assembly>
+  <members>
+    <member name="T:eZet.EveLib.EveWhoModule.EveWho">
+      <summary>
+                Class EveWho.
+            </summary>
+    </member>
+    <member name="F:eZet.EveLib.EveWhoModule.EveWho.DefaultHost">
+      <summary>
+                The default URI used to access the EveWho API.
+            </summary>
+    </member>
+    <member name="F:eZet.EveLib.EveWhoModule.EveWho.DefaultApiPath">
+      <summary>
+                The default relative path to the API base.
+            </summary>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.#ctor">
+      <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveWhoModule.EveWho" /> class.
+            </summary>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetCharacterAsync(System.Int64,System.Int32)">
+      <summary>
+                Gets the character asynchronous.
+            </summary>
+      <param name="characterId">The character identifier.</param>
+      <param name="page">The page.</param>
+      <returns>Task&lt;EveWhoResponse&lt;Character&gt;&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetCharacter(System.Int64,System.Int32)">
+      <summary>
+                Gets the character.
+            </summary>
+      <param name="characterId">The character identifier.</param>
+      <param name="page">The page.</param>
+      <returns>EveWhoResponse&lt;Character&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetCorporationAsync(System.Int64,System.Int32)">
+      <summary>
+                Gets the corporation asynchronous.
+            </summary>
+      <param name="corporationId">The corporation identifier.</param>
+      <param name="page">The page.</param>
+      <returns>Task&lt;EveWhoResponse&lt;Corporation&gt;&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetCorporation(System.Int64,System.Int32)">
+      <summary>
+                Gets the corporation.
+            </summary>
+      <param name="corporationId">The corporation identifier.</param>
+      <param name="page">The page.</param>
+      <returns>EveWhoResponse&lt;Corporation&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetCorporationMembersAsync(System.Int64,System.Int32)">
+      <summary>
+                Gets the corporation members asynchronous.
+            </summary>
+      <param name="corporationId">The corporation identifier.</param>
+      <param name="page">The page.</param>
+      <returns>Task&lt;EveWhoResponse&lt;CorporationMembers&gt;&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetCorporationMembers(System.Int64,System.Int32)">
+      <summary>
+                Gets the corporation members.
+            </summary>
+      <param name="corporationId">The corporation identifier.</param>
+      <param name="page">The page.</param>
+      <returns>EveWhoResponse&lt;CorporationMembers&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetAllianceAsync(System.Int64,System.Int32)">
+      <summary>
+                Gets the alliance asynchronous.
+            </summary>
+      <param name="allianceId">The alliance identifier.</param>
+      <param name="page">The page.</param>
+      <returns>Task&lt;EveWhoResponse&lt;Alliance&gt;&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetAlliance(System.Int64,System.Int32)">
+      <summary>
+                Gets the alliance.
+            </summary>
+      <param name="allianceId">The alliance identifier.</param>
+      <param name="page">The page.</param>
+      <returns>EveWhoResponse&lt;Alliance&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetAllianceMembersAsync(System.Int64,System.Int32)">
+      <summary>
+                Gets the alliance members asynchronous.
+            </summary>
+      <param name="allianceId">The alliance identifier.</param>
+      <param name="page">The page.</param>
+      <returns>Task&lt;EveWhoResponse&lt;AllianceMembers&gt;&gt;.</returns>
+    </member>
+    <member name="M:eZet.EveLib.EveWhoModule.EveWho.GetAllianceMembers(System.Int64,System.Int32)">
+      <summary>
+                Gets the alliance members.
+            </summary>
+      <param name="allianceId">The alliance identifier.</param>
+      <param name="page">The page.</param>
+      <returns>EveWhoResponse&lt;AllianceMembers&gt;.</returns>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.Alliance">
+      <summary>
+                Class Alliance.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.AllianceId">
+      <summary>
+                Gets or sets the alliance identifier.
+            </summary>
+      <value>The alliance identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.FactionId">
+      <summary>
+                Gets or sets the faction identifier.
+            </summary>
+      <value>The faction identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.Name">
+      <summary>
+                Gets or sets the name.
+            </summary>
+      <value>The name.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.Ticker">
+      <summary>
+                Gets or sets the ticker.
+            </summary>
+      <value>The ticker.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.MemberCount">
+      <summary>
+                Gets or sets the member count.
+            </summary>
+      <value>The member count.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.AvgSecurityStatus">
+      <summary>
+                Gets or sets the average security status.
+            </summary>
+      <value>The average security status.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Alliance.ExecutorCorporation">
+      <summary>
+                Gets or sets the executor corporation.
+            </summary>
+      <value>The executor corporation.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.AllianceMembers">
+      <summary>
+                Class AllianceMembers.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.AllianceMembers.AllianceId">
+      <summary>
+                Gets or sets the alliance identifier.
+            </summary>
+      <value>The alliance identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.AllianceMembers.Name">
+      <summary>
+                Gets or sets the name.
+            </summary>
+      <value>The name.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.AllianceMembers.MemberCount">
+      <summary>
+                Gets or sets the member count.
+            </summary>
+      <value>The member count.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.AllianceMembers.Members">
+      <summary>
+                Gets or sets the members.
+            </summary>
+      <value>The members.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.Character">
+      <summary>
+                Class Character.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.CharacterId">
+      <summary>
+                Gets or sets the character identifier.
+            </summary>
+      <value>The character identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.CorporationId">
+      <summary>
+                Gets or sets the corporation identifier.
+            </summary>
+      <value>The corporation identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.AllianceId">
+      <summary>
+                Gets or sets the alliance identifier.
+            </summary>
+      <value>The alliance identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.Name">
+      <summary>
+                Gets or sets the name.
+            </summary>
+      <value>The name.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.SecurityStatus">
+      <summary>
+                Gets or sets the security status.
+            </summary>
+      <value>The security status.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.History">
+      <summary>
+                Gets or sets the history.
+            </summary>
+      <value>The history.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.Character.EveWhoHistoryEntry">
+      <summary>
+                Class EveWhoHistoryEntry.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.EveWhoHistoryEntry.CorporationId">
+      <summary>
+                Gets or sets the corporation identifier.
+            </summary>
+      <value>The corporation identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.EveWhoHistoryEntry.StartDate">
+      <summary>
+                Gets or sets the start date.
+            </summary>
+      <value>The start date.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Character.EveWhoHistoryEntry.EndDate">
+      <summary>
+                Gets or sets the end date.
+            </summary>
+      <value>The end date.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.Corporation">
+      <summary>
+                Class Corporation.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.CorporationId">
+      <summary>
+                Gets or sets the corporation identifier.
+            </summary>
+      <value>The corporation identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.AllianceId">
+      <summary>
+                Gets or sets the alliance identifier.
+            </summary>
+      <value>The alliance identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.Name">
+      <summary>
+                Gets or sets the name.
+            </summary>
+      <value>The name.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.Ticker">
+      <summary>
+                Gets or sets the ticker.
+            </summary>
+      <value>The ticker.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.MemberCount">
+      <summary>
+                Gets or sets the member count.
+            </summary>
+      <value>The member count.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.IsNpcCorporationString">
+      <summary>
+                Sets the is NPC corporation string.
+            </summary>
+      <value>The is NPC corporation string.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.IsNpcCorporation">
+      <summary>
+                Gets or sets a value indicating whether this instance is NPC corporation.
+            </summary>
+      <value>
+        <c>true</c> if this instance is NPC corporation; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.AvgSecurityStatus">
+      <summary>
+                Gets or sets the average security status.
+            </summary>
+      <value>The average security status.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.IsActiveString">
+      <summary>
+                Sets the is active string.
+            </summary>
+      <value>The is active string.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.IsActive">
+      <summary>
+                Gets or sets a value indicating whether this instance is active.
+            </summary>
+      <value>
+        <c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.CeoId">
+      <summary>
+                Gets or sets the ceo identifier.
+            </summary>
+      <value>The ceo identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.TaxRate">
+      <summary>
+                Gets or sets the tax rate.
+            </summary>
+      <value>The tax rate.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Corporation.Description">
+      <summary>
+                Gets or sets the description.
+            </summary>
+      <value>The description.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.CorporationMembers">
+      <summary>
+                Class CorporationMembers.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.CorporationMembers.CorporationId">
+      <summary>
+                Gets or sets the corporation identifier.
+            </summary>
+      <value>The corporation identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.CorporationMembers.Name">
+      <summary>
+                Gets or sets the name.
+            </summary>
+      <value>The name.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.CorporationMembers.MemberCount">
+      <summary>
+                Gets or sets the member count.
+            </summary>
+      <value>The member count.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.CorporationMembers.Members">
+      <summary>
+                Gets or sets the members.
+            </summary>
+      <value>The members.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.Member">
+      <summary>
+                Class Member.
+            </summary>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Member.CharacterId">
+      <summary>
+                Gets or sets the character identifier.
+            </summary>
+      <value>The character identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Member.CorporationId">
+      <summary>
+                Gets or sets the corporation identifier.
+            </summary>
+      <value>The corporation identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Member.AllianceId">
+      <summary>
+                Gets or sets the alliance identifier.
+            </summary>
+      <value>The alliance identifier.</value>
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.Member.Name">
+      <summary>
+                Gets or sets the name.
+            </summary>
+      <value>The name.</value>
+    </member>
+    <member name="T:eZet.EveLib.EveWhoModule.Models.EveWhoResponse`1">
+      <summary>
+                Class EveWhoResponse.
+            </summary>
+      <typeparam name="T" />
+    </member>
+    <member name="P:eZet.EveLib.EveWhoModule.Models.EveWhoResponse`1.Info">
+      <summary>
+                Gets or sets the information.
+            </summary>
+      <value>The information.</value>
+    </member>
+  </members>
+</doc>

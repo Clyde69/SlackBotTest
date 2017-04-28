@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EveLib.EveAuth</name>
+    </assembly>
+    <members>
+        <member name="T:eZet.EveLib.EveAuthModule.AuthResponse">
+            <summary>
+                Class AuthResponse.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthResponse.AccessToken">
+            <summary>
+                Gets or sets the access token.
+            </summary>
+            <value>The access token.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthResponse.TokenType">
+            <summary>
+                Gets or sets the type of the token.
+            </summary>
+            <value>The type of the token.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthResponse.ExpiresIn">
+            <summary>
+                Gets or sets the expires in.
+            </summary>
+            <value>The expires in.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthResponse.RefreshToken">
+            <summary>
+                Gets or sets the refresh token.
+            </summary>
+            <value>The refresh token.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveAuthModule.AuthError">
+            <summary>
+                Represents a CREST exception
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthError.Message">
+            <summary>
+                The error message
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthError.Key">
+            <summary>
+                The error key
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthError.ExceptionType">
+            <summary>
+                The exception type
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.AuthError.RefId">
+            <summary>
+                The exception reference ID, if any
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveAuthModule.EveAuthException">
+            <summary>
+                Exception for EveCrest
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuthException.#ctor(System.String,System.Net.WebException,System.String,System.String,System.String)">
+            <summary>
+                Creates a new Eve Crest Exception
+            </summary>
+            <param name="message">Error message returned by CREST</param>
+            <param name="innerException">The WebException that caused this exception</param>
+            <param name="key">The Key returned by CREST</param>
+            <param name="exceptionType">The Exception Type returned by CREST</param>
+            <param name="refId">the Ref ID returned by CREST</param>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuthException.#ctor(System.String,System.Net.WebException)">
+            <summary>
+            Initializes a new instance of the <see cref="T:eZet.EveLib.EveAuthModule.EveAuthException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.EveAuthException.Key">
+            <summary>
+                Gets the Eve CREST Exception key
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.EveAuthException.ExceptionType">
+            <summary>
+                Gets the Eve CREST Exception Type
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.EveAuthException.RefId">
+            <summary>
+                Gets the Eve CREST Exception Reference ID, if any.
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveAuthModule.CrestScope">
+            <summary>
+                Enum CrestScope
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveAuthModule.CrestScope.None">
+            <summary>
+                No scope
+            </summary>
+        </member>
+        <member name="F:eZet.EveLib.EveAuthModule.CrestScope.PublicData">
+            <summary>
+                The publicData scope
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveAuthModule.EveAuth">
+            <summary>
+                Class EveAuth. A helper class for Eve Online SSO authentication
+            </summary>
+        </member>
+        <member name="T:eZet.EveLib.EveAuthModule.IEveAuth">
+            <summary>
+                Interface IEveAuth
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.IEveAuth.AuthenticateAsync(System.String,System.String)">
+            <summary>
+                Authenticates the specified encoded key.
+            </summary>
+            <param name="encodedKey">The encoded key.</param>
+            <param name="authCode">The authentication code.</param>
+            <returns>Task&lt;AuthResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.IEveAuth.RefreshAsync(System.String,System.String)">
+            <summary>
+                Refreshes the specified encoded key.
+            </summary>
+            <param name="encodedKey">The encoded key.</param>
+            <param name="refreshToken">The refresh token.</param>
+            <returns>Task&lt;AuthResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuth.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:eZet.EveLib.EveAuthModule.EveAuth"/> class.
+            </summary>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuth.AuthenticateAsync(System.String,System.String)">
+            <summary>
+                Authenticates the specified encoded key.
+            </summary>
+            <param name="encodedKey">The encoded key.</param>
+            <param name="authCode">The authentication code.</param>
+            <returns>Task&lt;AuthResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuth.RefreshAsync(System.String,System.String)">
+            <summary>
+                Refreshes the specified encoded key.
+            </summary>
+            <param name="encodedKey">The encoded key.</param>
+            <param name="refreshToken">The refresh token.</param>
+            <returns>Task&lt;AuthResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuth.VerifyAsync(System.String)">
+            <summary>
+                Verifies the access token
+            </summary>
+            <param name="accessToken">The access token.</param>
+            <returns>Task&lt;VerifyResponse&gt;.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuth.CreateAuthLink(System.String,System.String,eZet.EveLib.EveAuthModule.CrestScope)">
+            <summary>
+                Creates an authentication link.
+            </summary>
+            <param name="clientId">The client identifier.</param>
+            <param name="redirectUri">The redirect URI.</param>
+            <param name="crestScope">The crest scope.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:eZet.EveLib.EveAuthModule.EveAuth.Encode(System.String,System.String)">
+            <summary>
+                Encodes the specified client identifier and secret.
+            </summary>
+            <param name="clientId">The client identifier.</param>
+            <param name="clientSecret">The client secret.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.EveAuth.BaseUri">
+            <summary>
+                Gets or sets the base URI.
+            </summary>
+            <value>The base URI.</value>
+        </member>
+        <member name="T:eZet.EveLib.EveAuthModule.VerifyResponse">
+            <summary>
+                Class VerifyResponse.
+            </summary>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.VerifyResponse.CharacterId">
+            <summary>
+                Gets or sets the character identifier.
+            </summary>
+            <value>The character identifier.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.VerifyResponse.CharacterName">
+            <summary>
+                Gets or sets the name of the character.
+            </summary>
+            <value>The name of the character.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.VerifyResponse.ExpiresOn">
+            <summary>
+                Gets or sets the expires on.
+            </summary>
+            <value>The expires on.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.VerifyResponse.Scopes">
+            <summary>
+                Gets or sets the scopes.
+            </summary>
+            <value>The scopes.</value>
+        </member>
+        <member name="P:eZet.EveLib.EveAuthModule.VerifyResponse.CharacterOwnerHash">
+            <summary>
+                Gets or sets the character owner hash.
+            </summary>
+            <value>The character owner hash.</value>
+        </member>
+    </members>
+</doc>
