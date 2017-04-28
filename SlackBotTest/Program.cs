@@ -43,7 +43,7 @@ namespace SlackBotTest
 
         static async Task ConnectionTest()
         {
-            var start = (ResponseRoot)Web.BaseRequest("https://slack.com/api/rtm.start/?token=xoxb-7037557250-iIxD9Vgm1UlZdpbXpXJEJR4d").Deserialize(typeof(ResponseRoot));
+            var start = (ResponseRoot)Web.BaseRequest("https://slack.com/api/rtm.start/?token=").Deserialize(typeof(ResponseRoot));
 
             var channelDeets = start.channels.First(f => f.name.Equals("public"));
             var denDeets = start.channels.First(f => f.name.Equals("den"));
